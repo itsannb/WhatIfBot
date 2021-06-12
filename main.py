@@ -59,4 +59,4 @@ async def on_disconnet():
 
 
 # Run the bot on server
-bot.run('ODUzMDE5NjE2NTk4NDI1NjMw.YMPSbA.RQTqLUxiSmUGJ_qQ24zutBfYbTM')
+bot.run('token')
