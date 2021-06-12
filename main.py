@@ -29,7 +29,7 @@ async def version(context):
     verEmbed = discord.Embed(title="Current Version:", color=0xA977F1)
     verEmbed.add_field(name="Version Code", value="v1.0.1", inline=False)
     verEmbed.add_field(name="Release Date", value="June 11, 2021", inline=False)
-    verEmbed.set_author(name="Ann B and Huy M")
+    verEmbed.set_author(name="What-If Bot")
 
     await context.message.channel.send(embed=verEmbed)
 
