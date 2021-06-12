@@ -13,23 +13,28 @@ async def on_ready(): # async allows the function to run even though there is a 
 
     await general_channel.send('Hello, I am What-If Bot. The absolute memey-est bot on the planet. write 8! help to get started')
 
-# what if
-@bot.command(name = "what_if")
-async def what_if(context):
-    r1 = random.randint(0,5)
-    if r1 == 0:
-        await context.message.channel.send("Good")
-    elif r1 == 1:
-        await context.message.channel.send("Bad")
-    elif r1 == 2:
-        await context.message.channel.send("Sad")
-    elif r1 == 3:
-        await context.message.channel.send("Trully tragic")
-    elif r1 == 4:
-        await context.message.channel.send("Best news ever")
-    elif r1 == 5:
-        await context.message.channel.send("Maybe this is all right")
+#what if
+@bot.event
+async def on_message(message):
+    general_channel = client.get_channel(827643671171039286)
+   
+    if "what if" in message.content:
+        r1 = random.randint(0,5)
+        if r1 == 0:
+            await general_channel.send("Good")
+        elif r1 == 1:
+            await general_channel.send("Bad")
+        elif r1 == 2:
+            await general_channel.send("Sad")
+        elif r1 == 3:
+            await general_channel.send("Trully tragic")
+        elif r1 == 4:
+            await general_channel.send("Best news ever")
+        else:
+            await general_channel.send("Maybe this is all right")
 
+    await client.process_commands(message)
+        
 # help
 @bot.command(name = "helps")
 async def help(context):
