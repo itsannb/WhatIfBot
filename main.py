@@ -48,7 +48,7 @@ async def joke(context):
 # what if
 @bot.event
 async def on_message(message):
-    if "what if" in message.content:
+    if "what if" in message.content.lower():
         file = open('what-ifs.txt')
         content = file.readlines()
         r1 = random.randint(0,len(content))
