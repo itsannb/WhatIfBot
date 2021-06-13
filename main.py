@@ -37,35 +37,22 @@ async def version(context):
 # jokes
 @bot.command(name = 'joke')
 async def joke(context):
-
-    general_channel = bot.get_channel(827643671171039286)
-
+    
     file = open('dadjokes.txt')
     content = file.readlines()
-    r2 = random.randint(0,5)
+    r2 = random.randint(0,len(content))
 
-    await general_channel.send(content[r2])
+    await context.message.channel.send(content[r2])
 
 # what if
 @bot.event
 async def on_message(message):
-
-    general_channel = bot.get_channel(827643671171039286)
-
     if "what if" in message.content:
-        r1 = random.randint(0,5)
-        if r1 == 0:
-            await general_channel.send("Good")
-        elif r1 == 1:
-            await general_channel.send("Bad")
-        elif r1 == 2:
-            await general_channel.send("Sad")
-        elif r1 == 3:
-            await general_channel.send("Truly Tragic")
-        elif r1 == 4:
-            await general_channel.send("Best News Ever")
-        elif r1 == 5:
-            await general_channel.send("Maybe this is alright")
+        file = open('what-ifs.txt')
+        content = file.readlines()
+        r1 = random.randint(0,len(content))
+
+        await message.channel.send(content[r1])
 
     await bot.process_commands(message)
 
