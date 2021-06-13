@@ -14,11 +14,11 @@ async def on_ready(): # async allows the function to run even though there is a 
     await general_channel.send('Hello, I am What-If Bot. The absolute memey-est bot on the planet. write 8! help to get started')
 
 # help
-@bot.command(name = 'helps')
+@bot.command(name = 'help')
 async def help(context):
     myEmbed = discord.Embed(title = "List of Functions")
-    myEmbed.add_field(name = "8! what_if", value = "answers your what if question", inline=False)
-    myEmbed.add_field(name = "8! joke", value = "gives a funny joke", inline=False)
+    myEmbed.add_field(name = "what if ...", value = "answers your what if question", inline=False)
+    myEmbed.add_field(name = "8! joke", value = "gives a funny dad joke", inline=False)
     myEmbed.add_field(name = "8! version", value = "states the version", inline=False)
 
     await context.message.channel.send(embed = myEmbed)
@@ -34,11 +34,17 @@ async def version(context):
 
     await context.message.channel.send(embed = verEmbed)
 
-# shutdown
-@bot.command(name = "shutdown")
-@command.is_owner()
-async def shutdown(context):
-    exit()
+# jokes
+@bot.command(name = 'joke')
+async def joke(context):
+
+    general_channel = bot.get_channel(827643671171039286)
+
+    file = open('dadjokes.txt')
+    content = file.readlines()
+    r2 = random.randint(0,5)
+
+    await general_channel.send(content[r2])
 
 # what if
 @bot.event
@@ -71,4 +77,4 @@ async def on_disconnect():
 
 
 # Run the bot on server
-bot.run('token')
+bot.run('ODUzMDE5NjE2NTk4NDI1NjMw.YMPSbA.MQ3UvUs3-17CQdbIPthgGJnhISg')
