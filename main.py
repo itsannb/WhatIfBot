@@ -4,25 +4,26 @@ from discord.ext import commands
 import random
 
 # The bot
-bot = commands.Bot(command_prefix='8! ')
-genChannel = 827643671171039286
+bot = commands.Bot(command_prefix='8! ', case_insensitive = True)
+genChannel = 853534329996181514
 
 # when the bot starts
 @bot.event
 async def on_ready(): # async allows the function to run even though there is a delay
     general_channel = bot.get_channel(genChannel)
 
-    await general_channel.send('Hello, I am What-If Bot. The absolute memey-est bot on the planet. write 8! help to get started')
+    await general_channel.send('Hello, I am What-If Bot. I am an absolute meme. write "8! commands" to get started')
 
 # help
-@bot.command(name = 'help')
-async def help(context):
-    helpEmbed = discord.Embed(title = "List of Functions")
-    helpEmbed.add_field(name = "what if ...", value = "answers your what if question", inline=False)
-    helpEmbed.add_field(name = "8! joke", value = "gives a funny dad joke", inline=False)
-    helpEmbed.add_field(name = "8! version", value = "states the version", inline=False)
+@bot.command(name = 'commands')
+async def commands(context):
+    infoEmbed = discord.Embed(title = "List of Functions", color = 0xA977F1)
+    infoEmbed.add_field(name = "what if ...", value = "answers your what if question", inline=False)
+    infoEmbed.add_field(name = "8! joke", value = "gives a funny dad joke", inline=False)
+    infoEmbed.add_field(name = "8! version", value = "states the version", inline=False)
+    infoEmbed.set_footer(text = "Ann B and Huy M")
 
-    await context.message.channel.send(embed = helpEmbed)
+    await context.message.channel.send(embed = infoEmbed)
 
 # version
 @bot.command(name = 'version')
@@ -31,7 +32,7 @@ async def version(context):
     verEmbed.add_field(name = "Version Code", value = "v1.0.2", inline = False)
     verEmbed.add_field(name = "Release Date", value = "June 12, 2021", inline = False)
     verEmbed.set_author(name = "What-If Bot")
-    verEmbed.set_footer(name = "Ann B and Huy M")
+    verEmbed.set_footer(text = "Ann B and Huy M")
 
     await context.message.channel.send(embed = verEmbed)
 
@@ -41,7 +42,7 @@ async def joke(context):
     
     file = open('dadjokes.txt')
     content = file.readlines()
-    r2 = random.randint(0,len(content))
+    r2 = random.randint(0,len(content) - 1)
 
     await context.message.channel.send(content[r2])
 
@@ -51,7 +52,7 @@ async def on_message(message):
     if "what if" in message.content.lower():
         file = open('what-ifs.txt')
         content = file.readlines()
-        r1 = random.randint(0,len(content))
+        r1 = random.randint(0,len(content) - 1)
 
         await message.channel.send(content[r1])
 
@@ -61,8 +62,8 @@ async def on_message(message):
 @bot.event
 async def on_disconnect():
     general_channel = bot.get_channel(genChannel)
-    await general_channel.send('goodbye')
+    await general_channel.send('Goodbye, and have a nice day!')
 
 
 # Run the bot on server
-bot.run('token')
+bot.run('ODUzMDE5NjE2NTk4NDI1NjMw.YMPSbA.aZ3-2dd4FbucEX1D_BB-wrxKK1Y')
