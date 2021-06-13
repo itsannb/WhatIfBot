@@ -17,12 +17,12 @@ async def on_ready(): # async allows the function to run even though there is a 
 # help
 @bot.command(name = 'help')
 async def help(context):
-    myEmbed = discord.Embed(title = "List of Functions")
-    myEmbed.add_field(name = "what if ...", value = "answers your what if question", inline=False)
-    myEmbed.add_field(name = "8! joke", value = "gives a funny dad joke", inline=False)
-    myEmbed.add_field(name = "8! version", value = "states the version", inline=False)
+    helpEmbed = discord.Embed(title = "List of Functions")
+    helpEmbed.add_field(name = "what if ...", value = "answers your what if question", inline=False)
+    helpEmbed.add_field(name = "8! joke", value = "gives a funny dad joke", inline=False)
+    helpEmbed.add_field(name = "8! version", value = "states the version", inline=False)
 
-    await context.message.channel.send(embed = myEmbed)
+    await context.message.channel.send(embed = helpEmbed)
 
 # version
 @bot.command(name = 'version')
