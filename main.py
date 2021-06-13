@@ -5,11 +5,12 @@ import random
 
 # The bot
 bot = commands.Bot(command_prefix='8! ')
+genChannel = 827643671171039286
 
 # when the bot starts
 @bot.event
 async def on_ready(): # async allows the function to run even though there is a delay
-    general_channel = bot.get_channel(827643671171039286)
+    general_channel = bot.get_channel(genChannel)
 
     await general_channel.send('Hello, I am What-If Bot. The absolute memey-est bot on the planet. write 8! help to get started')
 
@@ -59,7 +60,7 @@ async def on_message(message):
 # When the bot disconnects from the server
 @bot.event
 async def on_disconnect():
-    general_channel = bot.get_channel(827643671171039286)
+    general_channel = bot.get_channel(genChannel)
     await general_channel.send('goodbye')
 
 
