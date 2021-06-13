@@ -4,8 +4,8 @@ from discord.ext import commands
 import random
 
 # The bot
-bot = commands.Bot(command_prefix='8! ', case_insensitive = True)
-genChannel = 853534329996181514
+bot = commands.Bot(command_prefix = '8! ', case_insensitive = True)
+genChannel = 852997471314509884
 
 # when the bot starts
 @bot.event
@@ -18,9 +18,9 @@ async def on_ready(): # async allows the function to run even though there is a 
 @bot.command(name = 'commands')
 async def commands(context):
     infoEmbed = discord.Embed(title = "List of Functions", color = 0xA977F1)
-    infoEmbed.add_field(name = "what if ...", value = "answers your what if question", inline=False)
-    infoEmbed.add_field(name = "8! joke", value = "gives a funny dad joke", inline=False)
-    infoEmbed.add_field(name = "8! version", value = "states the version", inline=False)
+    infoEmbed.add_field(name = "what if ...", value = "answers your what if question", inline = False)
+    infoEmbed.add_field(name = "8! joke", value = "gives a funny dad joke", inline = False)
+    infoEmbed.add_field(name = "8! version", value = "states the version", inline = False)
     infoEmbed.set_footer(text = "Ann B and Huy M")
 
     await context.message.channel.send(embed = infoEmbed)
@@ -42,9 +42,9 @@ async def joke(context):
     
     file = open('dadjokes.txt')
     content = file.readlines()
-    r2 = random.randint(0,len(content) - 1)
+    r1 = random.randint(0,len(content) - 1)
 
-    await context.message.channel.send(content[r2])
+    await context.message.channel.send(content[r1])
 
 # what if
 @bot.event
@@ -52,9 +52,9 @@ async def on_message(message):
     if "what if" in message.content.lower():
         file = open('what-ifs.txt')
         content = file.readlines()
-        r1 = random.randint(0,len(content) - 1)
+        r2 = random.randint(0,len(content) - 1)
 
-        await message.channel.send(content[r1])
+        await message.channel.send(content[r2])
 
     await bot.process_commands(message)
 
